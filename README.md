@@ -6,7 +6,16 @@ be found in the README section the background](https://github.com/aaruff/ZTreeQu
 
 Usage
 -----------------------
-To run the sample code import the source.txt file into Z-Tree (File, Import...), save the treatment, and run it.
+To run the sample code download the project zip file, you should see a Download Zip button
+to the right, and decompress it. Run Z-Tree, import the sample program your interested in 
+running (File, Import...), save the imported treatment, and run it.
+
+Contribution
+------------
+If you would like to make a change to an existing sample program and have your update 
+reflected here, or would like to add your own QA sample program, [fork this project](https://help.github.com/articles/fork-a-repo/),
+make your additions and changes, and [send me a pull request](https://help.github.com/articles/using-pull-requests/).
+Don't have a github account? [Well go get one, it's free!](https://github.com/join).
 
 Questions
 ---------
