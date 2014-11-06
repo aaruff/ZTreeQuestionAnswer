@@ -1,5 +1,5 @@
-Z-Tree QA
-=========
+Z-Tree Qestion and Answer Sample Code
+======================================
 This is a repository containing all of the sample code I have written to answer
 Z-Tree implementation questions. Detailed explanation of how each program works [can
 be found in the README section the background](https://github.com/aaruff/ZTreeQuestionAnswer/blob/master/src/MultiButtonSelectionHistory.txt#L58-159).
