@@ -1,0 +1,400 @@
+treatment "MutliButtonSelectionHistory.ztt"{
+	background{
+		table globals{
+		}
+		table subjects{
+		}
+		table summary{
+		}
+		table contracts{
+		}
+		table session{
+		}
+		table logfile{
+		}
+		table ButtonSelectionHistoryTable{
+			lifetime = TREATMENT;
+			execute = WITHEACH;
+		}
+		numsubjects = 1;
+		numgroups = 1;
+		numpracticeperiods = 0;
+		numactualperiods = 1;
+		exchangerate = 1;
+		startendowment = 0;
+		showupfee = 0;
+		noAutoscope = FALSE;
+		v2IntegerVars = TRUE;
+		v2BooleanVars = TRUE;
+		firstBoxesOnTop = FALSE;
+		showupfeeawaytext = "You are making losses. Do you want to invest the showupfee in order to continue?";
+		showupfeeawayyestext = "Yes";
+		showupfeeawaynotext = "No";
+		moneyawaytext = "You are  making losses. Do you want to continue?";
+		moneyawayyestext = "Yes";
+		moneyawaynotext = "No";
+		bancruptwaittext = "Please wait until the experimenter unlocks your PC.";
+		program{
+			table = subjects;
+			do{
+				//--------------------------------------------
+			}
+		}
+		program{
+			table = subjects;
+			do{
+				//       Written by: Anwar A. Ruff    d[-_-]b     
+			}
+		}
+		program{
+			table = subjects;
+			do{
+				//--------------------------------------------
+			}
+		}
+		program{
+			table = subjects;
+			do{
+				/*   README.... or suffer the consequences
+				
+				The below instructions illustrate and describe what is required to display a list of buttons,
+				and record the order in which they are selected.
+				
+				Create a Custom Table
+				============================================
+				To store the order in which the buttons were clicked, and any other
+				additional data associated with it, you will have to create your own custom
+				table. In the example code I have already created a custom table named 
+				ButtonSelectionHistoryTable. All of the button selection history data will
+				be stored in this table.
+				
+				
+				Creating Buttons 
+				=============
+				To record the order in which buttons are selected you'll first need some buttons.
+				In this exaple I have created a set of buttons in the Button Selection stage, and
+				placed them in a gridbox. You don't have to put the buttons in a gridbox to make
+				this work, I just did so for convenience. 
+				
+				
+				Attaching Subject.do Programs to the Buttons
+				====================================
+				To record the click actions you will have to attach a subjects.do program to each button. 
+				Doing so will run the attached program every time a button is clicked.
+				
+				
+				Recording Button Selections
+				=======================
+				
+				Adding a row to the custom table when the button is selected
+				------------------------------------------------------------------------------------------------
+				To add a record to a custom table a new row data declaration must
+				be placed in each button's subject.do program. In this case we would
+				like to add a new record to the ButtonSelectionHistoryTable. To do so
+				the following declaration is added to each subject.do program:
+				
+				    ButtonSelectionHistoryTable.new {
+				        // row data is added here later....
+				    }
+				
+				The above essentially tells Z-Tree to put whater declarations are inside of it
+				into a new row residing in the ButtonSelectionHistoryTable.
+				
+				Adding row data to the custom table
+				----------------------------------------------------------
+				Now that we have declared that row data is to be added to the ButtonSelectionHistoryTable
+				every time a button is selected, all that remains is to tell Z-Tree what data do add to
+				the row. In order to do so you will have to declare a new table variable and assign the
+				value you want to record to it. For example if you would like to record the subject that
+				clicked on the button you would write the following:
+				
+				    ButtonSelectionHistoryTable.new {
+				        subject = :Subject;
+				    }
+				
+				In the above example, I am declaring a new variable subject and placing the subject ID (Subject)
+				in it. Since the above ButtonSelectionHistoryTable.new program is running inside of the
+				subjects.do program it can access the subject variables by prefixing it with a colon (:). 
+				The colon operator essentially means, use the variable associated with the program running
+				this one, in this case the subjects.do program.
+				
+				Adding all of the data to the custom table
+				-----------------------------------------------------------------
+				Now you should know enough to understand the button programs:
+				
+				    subjects.do {  // Gives the ButtonSelectionHistoryTable.new program access to subject variables like Subject.
+				
+				        ButtonSelectionHistoryTable.new {  // Tells Z-Tree to create a new row in the ButtonSelectionHistoryTable every time this runs
+				            subject = :Subject;           // Puts the subject ID in the subject column of the new row
+				            period = :Period;              // Puts the current period number into the period column of the new row
+				            buttonId = 1;                   // Puts the button 1 in the buttonId column of the new row
+				        }
+				    }
+				
+				Adding more buttons
+				---------------------------------
+				To add more buttons copy and paste a button containing the button program and increment the buttonId by 1 (e.g. buttonId = 2, or buttonId = 3, etc.)
+				
+				
+				Displaying The History
+				=================
+				To display the table history you can use the contracts list box. To use the contracts table in your program you can use the samples implementation as an
+				example.
+				
+				
+				Watching the Program In Action
+				==========================
+				To watch the button data get added to the ButtonSelectionHistoryTable as each button is selected:
+				Run the Treatment, select Run, all tables, and select the ButtonSelectionHistoryTable. You should now be able
+				to see the record data as it is added to the table when each button is selected.
+				
+				
+				Good Luck!
+				
+				Anwar 
+				
+				
+				
+				
+				*/
+			}
+		}
+		program{
+			table = subjects;
+			do{
+				//--------------------------------------------
+			}
+		}
+		screen action{
+			usesbg = TRUE;
+			withalertscreen = FALSE;
+			noalertscreen = FALSE;
+			headerbox "Header"{
+				hasframe = TRUE;
+				height = 10%;
+				top = 0p;
+				cuttop = TRUE;
+				showPeriods = TRUE;
+				showNumPeriods = TRUE;
+				periodtext = "Period";
+				periodoftext = "of";
+				practiceperiodprefix = "Trial ";
+				showtime = TRUE;
+				timestr = "Remaining time [sec]:";
+				pleasedecidetext = "Please reach a decision.";
+			}
+		}
+		screen wait{
+			usesbg = TRUE;
+			withalertscreen = FALSE;
+			noalertscreen = FALSE;
+			standardbox "Text"{
+				hasframe = TRUE;
+				buttonposition = BOTTOMRIGHT;
+				buttonsequence = HORIZONTAL;
+				item{
+					label = "Please wait until the experiment continues.";
+				}
+			}
+		}
+	}
+	stage "Button Selection"{
+		startwaitforall = TRUE;
+		singleentry = FALSE;
+		singleentrycontinuation = FALSE;
+		timeouttype = never;
+		timeout = 30;
+		screen action{
+			usesbg = TRUE;
+			withalertscreen = FALSE;
+			noalertscreen = FALSE;
+			gridbox "Grid"{
+				hasframe = TRUE;
+				height = 75%;
+				top = 0p;
+				buttonposition = BOTTOMRIGHT;
+				buttonsequence = HORIZONTAL;
+				numrows = 1;
+				numcolumns = 3;
+				firstcolumnwidth = 100;
+				firstrowheight = 100;
+				fieldsinrows = FALSE;
+				infieldlabeisallowed = FALSE;
+				firstrowislabel = FALSE;
+				firstcolumnislabel = FALSE;
+				labelseparators = FALSE;
+				rowseparators = FALSE;
+				columnseparators = FALSE;
+				button "B1"{
+					clearinputafterok = FALSE;
+					norecordmadeorselected = FALSE;
+					terminatestage = FALSE;
+					donotterminatestage = TRUE;
+					specialbuttoncolor = FALSE;
+					buttoncolor = 0;
+					program{
+						table = subjects;
+						do{
+							// This will add a record (Row) to the ButtonSelectionHistoryTable every time it is clicked
+							
+							ButtonSelectionHistoryTable.new {
+							// Adding the subject ID to the first column
+							subject = :Subject;
+							
+							// Adding which period this occured in
+							period = :Period;
+							
+							// Adding the ID for the button that was selected
+							buttonId = 1;
+							}
+						}
+					}
+				}
+				button "B2"{
+					clearinputafterok = FALSE;
+					norecordmadeorselected = FALSE;
+					terminatestage = FALSE;
+					donotterminatestage = TRUE;
+					specialbuttoncolor = FALSE;
+					buttoncolor = 0;
+					program{
+						table = subjects;
+						do{
+							// This will add a record (Row) to the ButtonSelectionHistoryTable every time it is clicked
+							
+							ButtonSelectionHistoryTable.new {
+							// Adding the subject ID to the first column
+							subject = :Subject;
+							
+							// Adding which period this occured in
+							period = :Period;
+							
+							// Adding the ID for the button that was selected
+							buttonId = 2;
+							}
+						}
+					}
+				}
+				button "B3"{
+					clearinputafterok = FALSE;
+					norecordmadeorselected = FALSE;
+					terminatestage = FALSE;
+					donotterminatestage = TRUE;
+					specialbuttoncolor = FALSE;
+					buttoncolor = 0;
+					program{
+						table = subjects;
+						do{
+							// This will add a record (Row) to the ButtonSelectionHistoryTable every time it is clicked
+							
+							ButtonSelectionHistoryTable.new {
+							// Adding the subject ID to the first column
+							subject = :Subject;
+							
+							// Adding which period this occured in
+							period = :Period;
+							
+							// Adding the ID for the button that was selected
+							buttonId = 3;
+							}
+						}
+					}
+				}
+			}
+			standardbox "Standard"{
+				hasframe = TRUE;
+				height = 25%;
+				bottom = 0p;
+				buttonposition = BOTTOMRIGHT;
+				buttonsequence = HORIZONTAL;
+				button "Continue"{
+					clearinputafterok = FALSE;
+					norecordmadeorselected = FALSE;
+					terminatestage = TRUE;
+					donotterminatestage = FALSE;
+					specialbuttoncolor = FALSE;
+					buttoncolor = 0;
+				}
+			}
+		}
+		screen wait{
+			usesbg = TRUE;
+			withalertscreen = FALSE;
+			noalertscreen = FALSE;
+		}
+	}
+	stage "Button Selection History"{
+		startwaitforall = TRUE;
+		singleentry = FALSE;
+		singleentrycontinuation = FALSE;
+		timeouttype = never;
+		timeout = 30;
+		screen action{
+			usesbg = TRUE;
+			withalertscreen = FALSE;
+			noalertscreen = FALSE;
+			selectcontractbox "Contract list"{
+				hasframe = TRUE;
+				height = 75%;
+				top = 0p;
+				table = ButtonSelectionHistoryTable;
+				buttonposition = BOTTOMRIGHT;
+				buttonsequence = HORIZONTAL;
+				emptyallowed = FALSE;
+				allemptyallowed = FALSE;
+				condition = TRUE;
+				tablelayout = LIST;
+				scrollatstart = FALSE;
+				scrollatEnd = TRUE;
+				selectbest = TRUE;
+				item{
+					label = "Subject";
+					variable = subject;
+					format = "1.0";
+					input = FALSE;
+				}
+				item{
+					label = "Period";
+					variable = period;
+					format = "1.0";
+					input = FALSE;
+				}
+				item{
+					label = "Button Selected";
+					variable = buttonId;
+					format = "1.0";
+					input = FALSE;
+				}
+			}
+			standardbox "Standard"{
+				hasframe = TRUE;
+				height = 25%;
+				bottom = 0p;
+				buttonposition = BOTTOMRIGHT;
+				buttonsequence = HORIZONTAL;
+				button "End of Example"{
+					clearinputafterok = FALSE;
+					norecordmadeorselected = FALSE;
+					terminatestage = TRUE;
+					donotterminatestage = FALSE;
+					specialbuttoncolor = FALSE;
+					buttoncolor = 0;
+				}
+			}
+		}
+		screen wait{
+			usesbg = TRUE;
+			withalertscreen = FALSE;
+			noalertscreen = FALSE;
+		}
+	}
+	roles{
+		role "S 1"{
+		}
+	}
+	period "1"{
+		subject 1{
+			group = 1;
+		}
+	}
+}
