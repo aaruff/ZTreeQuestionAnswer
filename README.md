@@ -23,7 +23,7 @@ Contribution
 If you would like to make a change to an existing sample program and have your update 
 reflected here, or would like to add your own QA sample program, [fork this project](https://help.github.com/articles/fork-a-repo/),
 make your additions and changes, and [send me a pull request](https://help.github.com/articles/using-pull-requests/).
-Don't have a github account? [Well go get one, it's free!](https://github.com/join).
+Don't have a github account? [What are you waiting for? Go get one, it's free!](https://github.com/join)
 
 License
 -------
