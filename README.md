@@ -1,14 +1,15 @@
 Z-Tree Qestion and Answer Sample Code
 ======================================
 This is a repository containing all of the sample code I have written to answer
-Z-Tree implementation questions. Detailed explanation of how each program works [can
-be found in the README section the background](https://github.com/aaruff/ZTreeQuestionAnswer/blob/master/src/MultiButtonSelectionHistory.txt#L58-159).
+Z-Tree implementation questions. Detailed explanation of how each program works can
+be found in the [sample code source directory](https://github.com/aaruff/ZTreeQuestionAnswer/blob/master/src/MultiButtonSelectionHistory), 
+and in the [background of the program](https://github.com/aaruff/ZTreeQuestionAnswer/blob/master/src/MultiButtonSelectionHistory/MultiButtonSelectionHistory.txt#L58-159).
 
 Usage
 -----------------------
 To run the sample code download the project zip file, there should be a Download ZIP button
 to the right of this text. Once the project file has been decompressed you can find all of
-the example source programs in the src directory. To run the sample program 
+the example source program directories in the src directory. To run the sample program 
 Start Z-Tree, import the sample program (File, Import...), save it (File, Save), and run it (Run, Start Treatment).
 
 Contribution
