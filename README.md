@@ -6,9 +6,10 @@ be found in the README section the background](https://github.com/aaruff/ZTreeQu
 
 Usage
 -----------------------
-To run the sample code download the project zip file, you should see a Download Zip button
-to the right, and decompress it. Run Z-Tree, import the sample program your interested in 
-running (File, Import...), save the imported treatment, and run it.
+To run the sample code download the project zip file, there should be a Download ZIP button
+to the right of this text. Once the project file has been decompressed you can find all of
+the example source programs in the src directory. To run the sample program 
+Start Z-Tree, import the sample program (File, Import...), save it (File, Save), and run it (Run, Start Treatment).
 
 Contribution
 ------------
