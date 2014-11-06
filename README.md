@@ -16,7 +16,7 @@ Questions
 ---------
 > How do I record the order in which a set of buttons are selected in Z-Tree for 2 or more buttons on a screen? 
 
-Sample Code Implementation: [MultiButtonSelectionHistory.txt](https://github.com/aaruff/ZTreeQuestionAnswer/blob/master/src/MultiButtonSelectionHistory.txt)
+Sample Code Implementation and Description: [MultiButtonSelectionHistory](https://github.com/aaruff/ZTreeQuestionAnswer/blob/master/src/MultiButtonSelectionHistory)
 
 Contribution
 ------------
