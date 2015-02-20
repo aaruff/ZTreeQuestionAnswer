@@ -1,7 +1,7 @@
 Z-Tree Random ID Assignment
 ======================================
 The example code provided here illustrates methods for randomly assigning Subject, Group, and Role IDs in [Z-Tree](http://www.iew.uzh.ch/ztree/index.php). 
-These examples were written to acompany a tutorial explaining how the souce code (i.e. the Fisher-Yates alorithm) works. 
+These examples were written to acompany a [tutorial](http://cess.nyu.edu/cess-experiments/z-tree-cheat-sheet/v-random-role-assignment/) explaining how the souce code (i.e. the Fisher-Yates alorithm) works. 
 
 Usage
 -----------------------
