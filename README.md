@@ -18,6 +18,10 @@ Questions
 
 Sample Code Implementation and Description: [MultiButtonSelectionHistory](https://github.com/aaruff/ZTreeQuestionAnswer/blob/master/src/MultiButtonSelectionHistory)
 
+> How do I randomly assign subject, group, or role IDs in Z-Tree? 
+
+Sample Code Implementation and Description: [Random ID Assignment](https://github.com/aaruff/ZTreeQuestionAnswer/blob/master/src/RandomizedIDAssignment)
+
 Contribution
 ------------
 If you would like to make a change to an existing sample program and have your update 
