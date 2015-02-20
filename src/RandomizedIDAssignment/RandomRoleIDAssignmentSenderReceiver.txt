@@ -1,0 +1,276 @@
+treatment "RandomRoleIDAssignment.ztt"{
+	background{
+		table globals{
+		}
+		table subjects{
+		}
+		table summary{
+		}
+		table contracts{
+		}
+		table session{
+		}
+		table logfile{
+		}
+		table Can{
+			lifetime = PERIOD;
+			execute = WITHEACH;
+		}
+		numsubjects = 4;
+		numgroups = 1;
+		numpracticeperiods = 0;
+		numactualperiods = 1;
+		exchangerate = 1;
+		startendowment = 0;
+		showupfee = 0;
+		noAutoscope = FALSE;
+		v2IntegerVars = TRUE;
+		v2BooleanVars = TRUE;
+		firstBoxesOnTop = FALSE;
+		showupfeeawaytext = "You are making losses. Do you want to invest the showupfee in order to continue?";
+		showupfeeawayyestext = "Yes";
+		showupfeeawaynotext = "No";
+		moneyawaytext = "You are  making losses. Do you want to continue?";
+		moneyawayyestext = "Yes";
+		moneyawaynotext = "No";
+		bancruptwaittext = "Please wait until the experimenter unlocks your PC.";
+		program{
+			table = Can;
+			do{
+				// --------------------------------------------------
+			}
+		}
+		program{
+			table = Can;
+			do{
+				//                Written by: Anwar A. Ruff
+			}
+		}
+		program{
+			table = Can;
+			do{
+				// --------------------------------------------------
+			}
+		}
+		program{
+			table = globals;
+			do{
+				//          Experiment Parameters
+				
+				numSubjects = 4;
+				
+			}
+		}
+		program{
+			table = Can;
+			do{
+				// --------------------------------------------------
+			}
+		}
+		program{
+			table = globals;
+			do{
+				//            Shuffle Group IDs
+				//------------------------------------------------------------------------------------------------------------
+				// Hey! Why is this in the globals table scope?
+				// If it wasn't each subject would have their own shuffled list of IDs.
+				//-----------------------------------------------------------------------------------------------------------
+				
+				array roleIDs[numSubjects];
+				
+				middle = rounddown(numSubjects/2, 1);
+				
+				subjectID = 1;
+				while (subjectID <= numSubjects) {
+				    roleIDs[subjectID] = if (subjectID <= middle, 1, 2);
+				
+				    subjectID = subjectID + 1;
+				}
+				
+				
+				//           Shuffle the Array
+				pointID = 0;
+				randID = 0;
+				id = numSubjects;
+				while (id > 1) {
+				    randID = rounddown(id*random(), 1) + 1;
+				    pointID = roleIDs[id];
+				    roleIDs[id] = roleIDs[randID];
+				    roleIDs[randID] = pointID;
+				
+				    id = id - 1;
+				}
+				
+				
+				
+				
+			}
+		}
+		program{
+			table = Can;
+			do{
+				// --------------------------------------------------
+			}
+		}
+		program{
+			table = subjects;
+			do{
+				// Assign Group ID
+				
+				Role = roleIDs[Subject];
+			}
+		}
+		program{
+			table = Can;
+			do{
+				// --------------------------------------------------
+			}
+		}
+		program{
+			table = subjects;
+			do{
+				// Check for Errors
+				
+				NUM_ERRORS = 2;
+				array errors[NUM_ERRORS];
+				
+				SUBJECTS_ERROR = 1;
+				GROUP_SIZE_ERROR = 2;
+				
+				n = subjects.count(Subject > 0);
+				if (numSubjects != n ) {
+				    errors[SUBJECTS_ERROR] = 1;
+				}
+				
+				
+				
+				
+			}
+		}
+		screen action{
+			usesbg = TRUE;
+			withalertscreen = FALSE;
+			noalertscreen = FALSE;
+			headerbox "Header"{
+				hasframe = TRUE;
+				height = 10%;
+				top = 0p;
+				cuttop = TRUE;
+				showPeriods = TRUE;
+				showNumPeriods = TRUE;
+				periodtext = "Period";
+				periodoftext = "of";
+				practiceperiodprefix = "Trial ";
+				showtime = TRUE;
+				timestr = "Remaining time [sec]:";
+				pleasedecidetext = "Please reach a decision.";
+			}
+		}
+		screen wait{
+			usesbg = TRUE;
+			withalertscreen = FALSE;
+			noalertscreen = FALSE;
+			standardbox "Text"{
+				hasframe = TRUE;
+				buttonposition = BOTTOMRIGHT;
+				buttonsequence = HORIZONTAL;
+				item{
+					label = "Please wait until the experiment continues.";
+				}
+			}
+		}
+	}
+	stage "Stage"{
+		startwaitforall = TRUE;
+		singleentry = FALSE;
+		singleentrycontinuation = FALSE;
+		timeouttype = ifnoinput;
+		timeout = 30;
+		screen action{
+			usesbg = TRUE;
+			withalertscreen = FALSE;
+			noalertscreen = FALSE;
+			standardbox "Num Subjects Error Display"{
+				hasframe = TRUE;
+				width = 50;
+				height = 75%;
+				left = 0p;
+				top = 0p;
+				displaycondition = errors[SUBJECTS_ERROR] == 1;
+				buttonposition = BOTTOMRIGHT;
+				buttonsequence = HORIZONTAL;
+				item{
+					label = "Error: The numSubjects doesn't match the number of subjects currently connected.";
+				}
+			}
+			standardbox "Group Size Error Display"{
+				hasframe = TRUE;
+				width = 50;
+				height = 75%;
+				right = 0p;
+				top = 0p;
+				displaycondition = errors[GROUP_SIZE_ERROR] == 1;
+				buttonposition = BOTTOMRIGHT;
+				buttonsequence = HORIZONTAL;
+				item{
+					label = "Error: The groupSize value is incorrect. It must evenly divide numSubjects.";
+				}
+			}
+			standardbox "Standard"{
+				hasframe = TRUE;
+				height = 75%;
+				top = 0p;
+				displaycondition = errors[SUBJECTS_ERROR] == 0 & errors[GROUP_SIZE_ERROR] == 0;
+				buttonposition = BOTTOMRIGHT;
+				buttonsequence = HORIZONTAL;
+				item{
+					label = "<>My role ID is <Role|1.0>";
+				}
+			}
+			standardbox "Standard"{
+				hasframe = TRUE;
+				height = 25%;
+				bottom = 0p;
+				buttonposition = BOTTOMRIGHT;
+				buttonsequence = HORIZONTAL;
+				button "OK"{
+					clearinputafterok = FALSE;
+					norecordmadeorselected = FALSE;
+					terminatestage = FALSE;
+					donotterminatestage = FALSE;
+					specialbuttoncolor = FALSE;
+					buttoncolor = 0;
+				}
+			}
+		}
+		screen wait{
+			usesbg = TRUE;
+			withalertscreen = FALSE;
+			noalertscreen = FALSE;
+		}
+	}
+	roles{
+		role "S 1"{
+		}
+		role "S 2"{
+		}
+		role "S 3"{
+		}
+		role "S 4"{
+		}
+	}
+	period "1"{
+		subject 1{
+			group = 1;
+		}
+		subject 2{
+			group = 1;
+		}
+		subject 3{
+			group = 1;
+		}
+		subject 4{
+			group = 1;
+		}
+	}
+}
